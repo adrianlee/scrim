@@ -18,7 +18,7 @@ var PG_CONNECTION_STRING = "postgres://bdoynxivzpqptc:zhvZRCXISqRmzkaJeZK9w0I0DO
 var steam = require('steamidconvert')();
 
 app.set('port', (process.env.PORT || 3000));
-app.set('hostname', (process.env.HOSTNAME || "localhost:" + app.get("port")));
+app.set('hostname', ("https://" + process.env.HOSTNAME || "http://localhost:" + app.get("port")));
 
 // Session middleware
 app.use(session({
@@ -46,8 +46,8 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new SteamStrategy({
-    returnURL: 'http://' + app.get('hostname') + '/auth/steam/return',
-    realm: 'http://' + app.get('hostname') + '/',
+    returnURL: app.get('hostname') + '/auth/steam/return',
+    realm: app.get('hostname') + '/',
     apiKey: '20087C97D27C353C48D3EB5CBF8F7B19',
     stateless: true
   },
