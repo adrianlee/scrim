@@ -1,0 +1,76 @@
+body {
+  font-family: 'Open Sans';
+}
+
+a {
+  color: #dd3535;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a:hover {
+  color: #982f2f;
+}
+
+nav {
+  margin: 10px 0;
+}
+
+nav a {
+  padding-right: 10px;
+}
+
+.layout {
+  padding: 10px;
+}
+
+.layout h1 {
+  font-size: 1.2em;
+}
+
+.ServerBrowser {
+  width: 800px;
+  text-align: left;
+}
+
+.ServerBrowser tr {
+  height: 50px;
+}
+
+#ServerBrowserStatus {
+  width: 50px;
+}
+
+.ServerBrowserItem {
+  padding: 10px;
+}
+
+.MessageLayout {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-flow: row;
+  background-color: #FBFBFB;
+  min-height: 500px;
+  max-width: 1000px;
+}
+
+.ConversationList {
+  flex: 1;
+  min-width: 160px;
+  max-width: 250px;
+  background-color: #F7F7F7;
+}
+
+.ConversationListItem {
+  background-color: #F9F9F9;
+  min-height: 50px;
+  margin: 10px;
+}
+
+.Conversation {
+  order: 1;
+  flex: 2;
+  margin: 10px;
+}
