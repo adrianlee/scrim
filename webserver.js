@@ -17,8 +17,14 @@ var PG_CONNECTION_STRING = "postgres://bdoynxivzpqptc:zhvZRCXISqRmzkaJeZK9w0I0DO
 // Misc
 var steam = require('steamidconvert')();
 
+if (process.env.NODE_ENV == "prod"){
+  app.set('port', (process.env.PORT || 3000));
+  app.set('hostname', ("aqueous-lake-47269.herokuapp.com"));
+} else {
+  app.set('port', (3000));
+  app.set('hostname', ("localhost:" + app.get("port")));
+}
 
-app.set('port', (process.env.PORT || 3000));
 
 // Session middleware
 app.use(session({ store: new FileStore({}), secret: 'csgoscrimftw2016' }));
@@ -39,8 +45,8 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new SteamStrategy({
-    returnURL: 'http://localhost:3000/auth/steam/return',
-    realm: 'http://localhost:3000/',
+    returnURL: 'http://' + app.get('hostname') + '/auth/steam/return',
+    realm: 'http://' + app.get('hostname') + '/',
     apiKey: '20087C97D27C353C48D3EB5CBF8F7B19',
     stateless: true
   },
@@ -146,10 +152,7 @@ app.get('/logout', function(req, res){
 });
 
 var server = app.listen(app.get('port'), function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('CSGOSCRIM web app listening at http://%s:%s', host, port);
+  console.log('CSGOSCRIM web app listening at http://%s', app.get('hostname'));
 });
 
 // Simple route middleware to ensure user is authenticated.
