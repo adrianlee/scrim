@@ -4,7 +4,7 @@ var app = express();
 
 // Session
 var session = require('express-session')
-var FileStore = require('session-file-store')(session);
+var RedisStore = require('connect-redis')(session);
 
 // Passport
 var passport = require('passport');
@@ -21,7 +21,14 @@ app.set('port', (process.env.PORT || 3000));
 app.set('hostname', (process.env.HOSTNAME || "localhost:" + app.get("port")));
 
 // Session middleware
-app.use(session({ store: new FileStore({}), secret: 'csgoscrimftw2016' }));
+app.use(session({
+    store: new RedisStore({
+      url: 'redis://rediscloud:7xXUn2UBLShLX9EG@pub-redis-15650.us-east-1-4.3.ec2.garantiadata.com:15650'
+    }),
+    secret: 'csgoscrimftw2016',
+    resave: false,
+    saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
