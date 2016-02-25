@@ -17,6 +17,9 @@ var PG_CONNECTION_STRING = "postgres://bdoynxivzpqptc:zhvZRCXISqRmzkaJeZK9w0I0DO
 // Misc
 var steam = require('steamidconvert')();
 
+
+app.set('port', (process.env.PORT || 3000));
+
 // Session middleware
 app.use(session({ store: new FileStore({}), secret: 'csgoscrimftw2016' }));
 app.use(passport.initialize());
@@ -142,7 +145,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-var server = app.listen(3000, function () {
+var server = app.listen(app.get('port'), function () {
   var host = server.address().address;
   var port = server.address().port;
 
