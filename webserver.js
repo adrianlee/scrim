@@ -17,14 +17,8 @@ var PG_CONNECTION_STRING = "postgres://bdoynxivzpqptc:zhvZRCXISqRmzkaJeZK9w0I0DO
 // Misc
 var steam = require('steamidconvert')();
 
-if (process.env.NODE_ENV == "prod"){
-  app.set('port', (process.env.PORT || 3000));
-  app.set('hostname', ("aqueous-lake-47269.herokuapp.com"));
-} else {
-  app.set('port', (3000));
-  app.set('hostname', ("localhost:" + app.get("port")));
-}
-
+app.set('port', (process.env.PORT || 3000));
+app.set('hostname', (process.env.HOSTNAME || "localhost:" + app.get("port")));
 
 // Session middleware
 app.use(session({ store: new FileStore({}), secret: 'csgoscrimftw2016' }));
