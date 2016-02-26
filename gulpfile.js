@@ -41,6 +41,8 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(output));
 });
 
-gulp.task('default',['browserify', 'sass', 'copy'], function() {
+gulp.task('build', ['browserify', 'sass', 'copy']);
+
+gulp.task('default', ['browserify', 'sass', 'copy'], function() {
     return gulp.watch('src/**/*.*', ['browserify', 'sass', 'copy'])
 });
