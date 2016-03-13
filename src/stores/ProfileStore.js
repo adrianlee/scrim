@@ -4,7 +4,7 @@ var Actions = require('../actions/Actions');
 
 var ProfileStore = Reflux.createStore({
     listenables: [Actions],
-    sourceUrl: '/profile',
+    sourceUrl: '/users',
 
     // init: function() {
     //     // this.fetchProfile();
@@ -18,6 +18,7 @@ var ProfileStore = Reflux.createStore({
             this.trigger(this.profile)
 
         $.ajax({
+            method: 'GET',
             url: this.sourceUrl,
             dataType: 'json',
             cache: false,

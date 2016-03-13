@@ -9,7 +9,12 @@ var Layout = React.createClass({
     	<header>
     		<h1><a href="#/">CSGOSCRIM</a></h1>
 	    	<nav>
-	    		<a href="#/servers">Servers</a>
+          <a href="#/orgs">Organizations</a>
+          <a href="#/events">Events</a>
+          <a href="#/servers">Servers</a>
+          <a href="#/teams">Teams</a>
+	    		<a href="#/matches">Matches</a>
+          <a href="#/players">Players</a>
 	    		<a href="#/messages">Messages</a>
 	    		<a href="#/profile">Profile</a>
           <a href="logout">Logout</a>

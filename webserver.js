@@ -19,7 +19,7 @@ var PG_CONNECTION_STRING = "postgres://bdoynxivzpqptc:zhvZRCXISqRmzkaJeZK9w0I0DO
 var steam = require('steamidconvert')();
 
 app.set('port', (process.env.PORT || 3000));
-app.set('hostname', ("https://" + process.env.HOSTNAME || "http://localhost:" + app.get("port")));
+app.set('hostname', (process.env.HOSTNAME ? "https://" + process.env.HOSTNAME : "http://localhost:" + app.get("port")));
 
 // Session middleware
 app.use(session({
@@ -171,7 +171,7 @@ process.on('uncaughtException', function(err) {
 /**
 * API
 */
-app.get('/profile', ensureAuthenticatedAPI, function(req, res) {
+app.get('/users', ensureAuthenticatedAPI, function(req, res) {
   pg('users')
     .where({
       id: req.user
@@ -188,6 +188,30 @@ app.get('/profile', ensureAuthenticatedAPI, function(req, res) {
       profile.created_at = user.created_at;
 
       res.json(profile);
+    })
+    .catch(function(error) {
+      console.error(error);
+      res.sendStatus(400);
+    });
+});
+
+app.get('/users/all', ensureAuthenticatedAPI, function(req, res) {
+  pg('users')
+    // .where({
+    // })
+    .then(function (users) {
+      console.log("/profile", users);
+
+      console.log(users);
+
+      // var profile = {};
+      // profile.alias = user.alias;
+      // profile.avatar = user.avatar;
+      // profile.profileurl = user.profileurl;
+      // profile.steamid = user.steamid;
+      // profile.created_at = user.created_at;
+
+      res.json(users);
     })
     .catch(function(error) {
       console.error(error);

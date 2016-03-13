@@ -1,5 +1,6 @@
-body {
-  font-family: 'Open Sans';
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
 }
 
 a {
@@ -12,6 +13,11 @@ a:hover {
   color: #982f2f;
 }
 
+header h1 {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
 nav {
   margin: 10px 0;
 }
@@ -20,12 +26,33 @@ nav a {
   padding-right: 10px;
 }
 
-.layout {
-  padding: 10px;
+h1, h2, h3 {
+  font-family: 'Open Sans';
+  margin: 0;
 }
 
-.layout h1 {
-  font-size: 1.2em;
+h1 {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.6em;
+}
+
+.layout {
+  padding: 10px;
 }
 
 .ServerBrowser {
