@@ -19,7 +19,7 @@ var PG_CONNECTION_STRING = "postgres://bdoynxivzpqptc:zhvZRCXISqRmzkaJeZK9w0I0DO
 var steam = require('steamidconvert')();
 
 app.set('port', (process.env.PORT || 3000));
-app.set('hostname', (process.env.HOSTNAME ? "https://" + process.env.HOSTNAME : "http://localhost:" + app.get("port")));
+app.set('hostname', (process.env.HOSTNAME ? "http://" + process.env.HOSTNAME : "http://localhost:" + app.get("port")));
 
 // Session middleware
 app.use(session({
